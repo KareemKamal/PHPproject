@@ -7,6 +7,9 @@ $result = mysqli_query($link, "select name from instructor");
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="jquery-1.8.0.js"></script>
+        <script src="adminaddinstructor.js"></script>
+
         <style>
             ul
             {
@@ -35,13 +38,19 @@ $result = mysqli_query($link, "select name from instructor");
             {
                 background-color:rosybrown;
             }
+            .left  {float: left ; margin: 0 30px 0 0}
+            .hidden {display: none;}
+            .highlight {background-color: lightblue}
 
         </style>
+
+
+
 
     </head>
 
     <body>
-        <a href="admin.php"><img src="favicon.ico" height="50px" weidth="50px"></a> 
+        <a href="admin.php"><img src="logo.jpg" height="80px" weidth="80px"></a> 
         <div id="list" align="center">
             <ul>
                 <li><a href="adminaddinstructor.php" >Instructor</a></li>
@@ -53,17 +62,28 @@ $result = mysqli_query($link, "select name from instructor");
 
             </ul><br>
             <div align="left">
-                <h1>Edit an Instructor:</h1><br>
-                <form method="post" action="">
-                    Name <select name="name">
-                        <?php
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<option>{$row['name']}</option>";
-                        }
-                        ?>
-                    </select><br>
-                    <input type="submit" value="edit"> <input type="button" name="delete" value="delete"><br><br><br><br><hr><br><br><br><br>
-                    <h1>Add New Instructor:</h1><br>
+                <h3>Edit an Instructor:</h3><br>
+                <form method="get" action="editinstructor.php">
+                    <div id="old">
+                        Name <select name="name">
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<option>{$row['name']}</option>";
+                            }
+                            ?>
+                        </select><br>
+                        <input type="button" value="edit"> <input type="button" name="delete" value="delete"><br><br><br><br>
+                    </div>
+                    <div id="new" class="left hidden">
+                        New Name<input type="text" name="newname">
+                        <br>
+                        <input type="submit" value="done" ><br>
+                    </div><br><br><br>
+
+
+
+                    <hr><br><br><br><br>
+                    <h3>Add New Instructor:</h3><br>
                     Name <input type="text" name="Name"><br>
                     Tilte&nbsp;&nbsp;&nbsp;<input type="text" name="title"><br>
                     <input type="submit" value="add"><br>

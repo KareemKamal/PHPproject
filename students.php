@@ -43,7 +43,7 @@ $resultname = mysqli_query($link, "select name from student");
     </head>
 
     <body>
-        <a href="admin.php"><img src="favicon.ico" height="50px" weidth="50px"></a> 
+        <a href="admin.php"><img src="logo.jpg" height="80px" weidth="80px"></a> 
         <div id="list" align="center">
             <ul>
                 <li><a href="adminaddinstructor.php" >Instructor</a></li>
