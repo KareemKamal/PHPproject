@@ -2,7 +2,7 @@
 include('functions.php');
 include('config.php');
 $link = connectToDB();
-$result = mysqli_query($link, "select name from instructor");
+$result = mysqli_query($link, "select name from instructor where deleted <> 1");
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,7 +72,7 @@ $result = mysqli_query($link, "select name from instructor");
                             }
                             ?>
                         </select><br>
-                        <input type="button" value="edit"> <input type="button" name="delete" value="delete"><br><br><br><br>
+                        <input type="button" value="edit"> <input type="submit" name="delete" value="delete"><br><br><br><br>
                     </div>
                     <div id="new" class="left hidden">
                         New Name<input type="text" name="newname">
@@ -85,7 +85,7 @@ $result = mysqli_query($link, "select name from instructor");
                     <hr><br><br><br><br>
                     <h3>Add New Instructor:</h3><br>
                     Name <input type="text" name="Name"><br>
-                    Tilte&nbsp;&nbsp;&nbsp;<input type="text" name="title"><br>
+                    
                     <input type="submit" value="add"><br>
                 </form>
             </div>
